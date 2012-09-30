@@ -1,0 +1,52 @@
+/* H5BP styles. */
+@import "../vendor/h5bp/css/style.css";
+
+/* Add Stylus stylesheets here, alll files ending in .styl will be compiled!
+ * For example: @import "main.styl";
+ *
+ * Note: All stylesheets are relative to `assets/css`.
+ *
+ */ 
+
+#main {
+    background-image: url('../images/brushed-metal-tile.png');
+    width: 216px;
+    height: 458px;
+    font-family: "HelveticaNeueMedium", "HelveticaNeue-Medium", "Helvetica Neue Medium", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight: 500; font-stretch: normal;
+}
+
+#stocks {
+    position: relative;
+    top: 55px;
+    padding: 0 18px;
+}
+
+#symbol-entry {
+    position: relative;
+    top: 15px;
+    padding: 0 18px;
+}
+
+li {
+    list-style: none;
+    background-color: #edf3ff;
+}
+
+li:nth-child(even) {
+    background-color: #ffffff;
+}
+
+li.selected {
+    color: #ffffff;
+    background-color: #3873d1;
+}
+
+.symbol {
+    color: #0c0c0c;
+}
+
+.company {
+    color: #82858d;
+}
+
+/* Put development-only CSS below this line. */
