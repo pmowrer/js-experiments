@@ -6,9 +6,15 @@ define([
     var model = Backbone.Model.extend({
 
         defaults: {
-            symbol: "ADBE",
+            symbol: "",
             price: 0,
-            change: 0
+            change: 0,
+            name: "",
+            cap: 0
+        },
+
+        getPercentageChange: function() {
+            return change / price;
         }
     });
 

@@ -70,7 +70,7 @@ define([
         
         stockSelectedHandler: function(event) {
             this.select(_.find(this.stockViews, function(view) {
-                return $(event.target).is(view.$el);
+                return $(event.currentTarget).is(view.$el);
             }).model);
         }
 

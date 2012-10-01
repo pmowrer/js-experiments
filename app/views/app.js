@@ -25,13 +25,13 @@ define([
         },
 
         createStock: function(event) {
-            var symbol = this.input.val().trim();
+            var symbol = this.input.val().trim().toUpperCase();
 
             if(event.which == 13 && symbol) {
-                var stock = this.findStockBySymbol(symbol); 
+                var stock = StocksCollection.findBySymbol(symbol); 
 
                 if(stock === undefined) {
-                    StocksCollection.create({ symbol: this.input.val().trim() });
+                    StocksCollection.create({ symbol: symbol });
                 }
                 else {
                     StocksView.select(stock);
@@ -44,15 +44,10 @@ define([
 
         removeStock: function(event) {
             if(StocksView.selected !== undefined) {
-                this.findStockBySymbol(StocksView.selected.get('symbol')).destroy();
+                StocksCollection.findBySymbol(StocksView.selected.get('symbol')).destroy();
             }
-        },
-
-        findStockBySymbol: function(symbol) {
-            return StocksCollection.find(function(stock) {
-                return stock.get('symbol') === symbol;
-            });        
         }
+
     });
 
     return new view();
