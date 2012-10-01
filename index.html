@@ -17,9 +17,16 @@
 <body>
   <!-- Main container. -->
   <div role="main" id="main">
-      <ul id="stocks"></ul>
       <input id="symbol-entry" />
-      <button id="remove">Remove</button>
+      <input type="button" id="add-button" value="+" />
+      <h1 id="stocks-header">Quotes:</h1>
+      <ul id="stocks"></ul>
+      <img src="assets/images/yahoo.png"
+      id="yahoo" class="centered-image" alt="Yahoo Finance" />
+      <input type="button" id="remove"
+      class="edit-buttons" value="Remove" />
+      <input type="button" id="done"
+      class="edit-buttons" value="Done" />
   </div>
 
   <!-- Application source. -->
