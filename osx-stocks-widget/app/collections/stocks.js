@@ -48,7 +48,6 @@ define([
 
             _.each(rows, function(row) {
                 var model = this.findBySymbol(row.symbol);
-                console.log(row, model);
                 model.set({ name: row.name, price: row.price, change: row.change, cap: row.cap });
             }, this);
         }
