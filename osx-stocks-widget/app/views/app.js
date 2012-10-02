@@ -10,7 +10,8 @@ define([
         el: '#edit-container',
 
         events: {
-            'keypress #symbol-input': 'createStock',
+            'keypress #symbol-input': 'inputKeyPressHandler',
+            'click #add': 'createStock',
             'click #remove': 'removeStock'
         },
 
@@ -24,10 +25,10 @@ define([
             return this;
         },
 
-        createStock: function(event) {
+        createStock: function() {
             var symbol = this.input.val().trim().toUpperCase();
 
-            if(event.which == 13 && symbol) {
+            if(symbol) {
                 var stock = StocksCollection.findBySymbol(symbol); 
 
                 if(stock === undefined) {
@@ -46,6 +47,12 @@ define([
             if(StocksView.selected !== undefined) {
                 StocksCollection.findBySymbol(StocksView.selected.get('symbol')).destroy();
             }
+        },
+
+        inputKeyPressHandler: function(event) {
+           if(event.which == 13) {
+               this.createStock();
+           }
         }
 
     });
