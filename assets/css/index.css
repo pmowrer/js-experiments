@@ -24,15 +24,30 @@ input[type="button"]::-moz-focus-inner {
     margin-right: auto; 
 }
 
-#main {
+body {
+    background-image: url('../images/dashboard-tile.png');
+}
+
+#edit-container {
     background-image: url('../images/brushed-metal-tile.png');
+    position: absolute;
+    top: 100px;
+    left: 100px;
     width: 216px;
     height: 458px;
     padding: 15px 18px 10px 18px;
     font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:400; font-stretch:normal;
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    1px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow:         1px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
-#symbol-entry, #add-button {
+#symbol-input, #add-button {
     font-size: 12px;
     line-height: 17px;
     height: 19px;
@@ -40,7 +55,7 @@ input[type="button"]::-moz-focus-inner {
     margin: 0;
 }
 
-#symbol-entry {
+#symbol-input {
     padding: 0 3px; 
     width: 154px;
     border: 1px solid #b7b7b7;
@@ -71,9 +86,10 @@ input[type="button"]::-moz-focus-inner {
 }
 
 #stocks {
-    background-color: #edf3ff;
+    background-image: url('../images/alternating-tile.png');
     border: 1px solid #666;
     list-style: none;
+    height: 315px;
     margin: 0;
     padding: 0;
     font-size: 11px;
@@ -81,6 +97,15 @@ input[type="button"]::-moz-focus-inner {
     text-overflow: ellipsis;
     white-space: no-wrap;
     overflow: hidden;
+}
+
+/* Doing both alternating li colors and
+ * a background image tile b/c image
+ * doesn't scale (zoom) well in relation to
+ * line-height of li items.
+ */
+#stocks li:nth-child(odd) {
+    background-color: #edf3ff;
 }
 
 #stocks li:nth-child(even) {
@@ -91,8 +116,8 @@ input[type="button"]::-moz-focus-inner {
     background-color: #3873d1;
 }
 
-#stocks span.selected {
-    color: #ffffff;
+#stocks li.selected span {
+    color: #fff;
 }
 
 #stocks .symbol {
@@ -118,13 +143,13 @@ input[type="button"]::-moz-focus-inner {
     color: #ffffff;
     border: 1px solid #222;
 
-background: -moz-linear-gradient(top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 6%, rgba(255,255,255,0.1) 25%, rgba(58,58,58,0) 83%, rgba(0,0,0,0.6) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.6)), color-stop(6%,rgba(255,255,255,0.3)), color-stop(25%,rgba(255,255,255,0.1)), color-stop(83%,rgba(58,58,58,0)), color-stop(100%,rgba(0,0,0,0.6))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.3) 6%,rgba(255,255,255,0.1) 25%,rgba(58,58,58,0) 83%,rgba(0,0,0,0.6) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.3) 6%,rgba(255,255,255,0.1) 25%,rgba(58,58,58,0) 83%,rgba(0,0,0,0.6) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.3) 6%,rgba(255,255,255,0.1) 25%,rgba(58,58,58,0) 83%,rgba(0,0,0,0.6) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.3) 6%,rgba(255,255,255,0.1) 25%,rgba(58,58,58,0) 83%,rgba(0,0,0,0.6) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#99000000',GradientType=0 ); /* IE6-9 */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.25) 10%, rgba(255,255,255,0.1) 23%, rgba(255,255,255,0) 29%, rgba(255,255,255,0.08) 32%, rgba(0,0,0,0.1) 33%, rgba(0,0,0,0) 46%, rgba(0,0,0,0) 90%, rgba(0,0,0,0.6) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.6)), color-stop(10%,rgba(255,255,255,0.25)), color-stop(23%,rgba(255,255,255,0.1)), color-stop(29%,rgba(255,255,255,0)), color-stop(32%,rgba(255,255,255,0.08)), color-stop(33%,rgba(0,0,0,0.1)), color-stop(46%,rgba(0,0,0,0)), color-stop(90%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.6))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.25) 10%,rgba(255,255,255,0.1) 23%,rgba(255,255,255,0) 29%,rgba(255,255,255,0.08) 32%,rgba(0,0,0,0.1) 33%,rgba(0,0,0,0) 46%,rgba(0,0,0,0) 90%,rgba(0,0,0,0.6) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.25) 10%,rgba(255,255,255,0.1) 23%,rgba(255,255,255,0) 29%,rgba(255,255,255,0.08) 32%,rgba(0,0,0,0.1) 33%,rgba(0,0,0,0) 46%,rgba(0,0,0,0) 90%,rgba(0,0,0,0.6) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.25) 10%,rgba(255,255,255,0.1) 23%,rgba(255,255,255,0) 29%,rgba(255,255,255,0.08) 32%,rgba(0,0,0,0.1) 33%,rgba(0,0,0,0) 46%,rgba(0,0,0,0) 90%,rgba(0,0,0,0.6) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0.25) 10%,rgba(255,255,255,0.1) 23%,rgba(255,255,255,0) 29%,rgba(255,255,255,0.08) 32%,rgba(0,0,0,0.1) 33%,rgba(0,0,0,0) 46%,rgba(0,0,0,0) 90%,rgba(0,0,0,0.6) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#99000000',GradientType=0 ); /* IE6-9 */
 
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;

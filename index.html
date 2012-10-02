@@ -16,20 +16,20 @@
 
 <body>
   <!-- Main container. -->
-  <div role="main" id="main">
-      <input id="symbol-entry" />
-      <input type="button" id="add-button" value="+" />
-      <h1 id="stocks-header">Quotes:</h1>
-      <ul id="stocks"></ul>
-      <img src="assets/images/yahoo.png"
-      id="yahoo" class="centered-image" alt="Yahoo Finance" />
-      <input type="button" id="remove"
-      class="edit-buttons" value="Remove" />
-      <input type="button" id="done"
-      class="edit-buttons" value="Done" />
-  </div>
+    <div role="main" id="main">
+        <div id="edit-container">
+            <input id="symbol-input" />
+            <input type="button" id="add-button" value="+" />
+            <h1 id="stocks-header">Quotes:</h1>
+            <ul id="stocks"></ul>
+            <img src="assets/images/yahoo.png"
+            id="yahoo" class="centered-image" alt="Yahoo Finance" />
+            <input type="button" id="remove" class="edit-buttons" value="Remove" />
+            <input type="button" id="done" class="edit-buttons" value="Done" />
+        </div>
+    </div>
 
-  <!-- Application source. -->
-  <script data-main="app/config" src="assets/js/libs/require.js"></script>
+    <!-- Application source. -->
+    <script data-main="app/config" src="assets/js/libs/require.js"></script>
 </body>
 </html>

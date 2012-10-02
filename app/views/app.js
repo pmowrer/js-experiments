@@ -7,15 +7,15 @@ define([
 ], function($, _, Backbone, StocksCollection, StocksView) {
     var view = Backbone.View.extend({
 
-        el: '#main',
+        el: '#edit-container',
 
         events: {
-            'keypress #symbol-entry': 'createStock',
+            'keypress #symbol-input': 'createStock',
             'click #remove': 'removeStock'
         },
 
         initialize: function() {
-            this.input = this.$('#symbol-entry');
+            this.input = this.$('#symbol-input');
 
             StocksCollection.fetch();
         },
