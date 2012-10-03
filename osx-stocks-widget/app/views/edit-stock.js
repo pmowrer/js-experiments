@@ -2,7 +2,7 @@ define([
     'jquery',
     'lodash',
     'backbone',
-    'text!templates/stock.html'
+    'text!templates/edit-stock.html'
 ], function($, _, Backbone, stockTemplate) {
 
     var view = Backbone.View.extend({

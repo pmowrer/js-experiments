@@ -26,6 +26,30 @@ input[type="button"]::-moz-focus-inner {
 
 body {
     background-image: url('../images/dashboard-tile.png');
+
+    font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:400; font-stretch:normal;
+}
+
+.shadowed {
+    -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    1px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow:         1px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.rounded {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+#display-container {
+    background-color: #051d3e;
+    position: absolute;
+    top: 100px;
+    left: 350px;
+    width: 216px;
+    color: #ffffff;
+    padding: 4px;
 }
 
 #edit-container {
@@ -36,15 +60,80 @@ body {
     width: 216px;
     height: 458px;
     padding: 15px 18px 10px 18px;
-    font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:400; font-stretch:normal;
+}
 
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
+#display-stocks-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 30px;
+    text-overflow: ellipsis;
+    white-space: no-wrap;
+    overflow: hidden;
+}
 
-    -webkit-box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow:    1px 5px 5px rgba(0, 0, 0, 0.3);
-    box-shadow:         1px 5px 5px rgba(0, 0, 0, 0.3);
+#display-stocks-list li:nth-child(even) {
+    background-image: url('../images/display-tile-light.png');
+}
+
+#display-stocks-list li:nth-child(odd) {
+    background-image: url('../images/display-tile-dark.png');
+}
+
+#display-stocks-list li.selected {
+    background-color: #051d3e;
+}
+
+#display-stocks-list .symbol,
+#display-stocks-list .stock-values,
+#display-stocks-list .change {
+    color: #ffffff;
+    text-shadow: 0px -1px 2px #333;
+    filter: dropshadow(color=#000000, offx=0, offy=-2);
+}
+
+#display-stocks-list .symbol {
+    padding-left: 6px;
+    width: 55px;
+}
+
+#display-stocks-list .stock-values {
+    float: right;
+}
+
+#display-stocks-list .change {
+    display: inline-block;
+    text-align: right;
+    width: 62px;
+    height: 22px;
+    margin: 0 5px;
+}
+
+.positive input {
+    border: solid 1px #457d23;
+
+    background: #6eb348; /* Old browsers */
+    background: -moz-linear-gradient(top, #6eb348 0%, #589c31 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6eb348), color-stop(100%,#589c31)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #6eb348 0%, #589c31 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #6eb348 0%, #589c31 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #6eb348 0%, #589c31 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #6eb348 0%, #589c31 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6eb348', endColorstr='#589c31',GradientType=0 ); /* IE6-9 */
+}
+
+.negative input {
+    border: solid 1px #83100b;
+
+    background: #6eb348; /* Old browsers */
+    background: -moz-linear-gradient(top, #c23d37 0%, #aa261f 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c23d37), color-stop(100%,#aa261f)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #c23d37 0%, #aa261f 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #c23d37 0%, #aa261f 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #c23d37 0%, #aa261f 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #c23d37 0%, #aa261f 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c23d37', endColorstr='#aa261f',GradientType=0 ); /* IE6-9 */
 }
 
 #symbol-input, #add {
@@ -85,7 +174,7 @@ body {
     padding: 5px 0;
 }
 
-#stocks {
+#edit-stocks-list {
     background-image: url('../images/alternating-tile.png');
     border: 1px solid #666;
     list-style: none;
@@ -104,23 +193,23 @@ body {
  * doesn't scale (zoom) well in relation to
  * line-height of li items.
  */
-#stocks li:nth-child(odd) {
+#edit-stocks-list li:nth-child(odd) {
     background-color: #edf3ff;
 }
 
-#stocks li:nth-child(even) {
+#edit-stocks-list li:nth-child(even) {
     background-color: #ffffff;
 }
 
-#stocks li.selected {
+#edit-stocks-list li.selected {
     background-color: #3873d1;
 }
 
-#stocks li.selected span {
+#edit-stocks-list li.selected span {
     color: #fff;
 }
 
-#stocks .symbol {
+#edit-stocks-list .symbol {
     color: #0c0c0c;
     font-weight: bold;
     display: inline-block;
@@ -128,7 +217,7 @@ body {
     width: 55px;
 }
 
-#stocks .name {
+#edit-stocks-list .name {
     color: #82858d;
 }
 

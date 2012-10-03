@@ -17,17 +17,19 @@
 <body>
   <!-- Main container. -->
     <div role="main" id="main">
-        <div id="edit-container">
+        <div id="edit-container" class="rounded shadowed">
             <input id="symbol-input" />
             <input type="button" id="add" value="+" />
             <h1 id="stocks-header">Quotes:</h1>
-            <ul id="stocks"></ul>
+            <ul id="edit-stocks-list"></ul>
             <img src="assets/images/yahoo.png"
             id="yahoo" class="centered-image" alt="Yahoo Finance" />
             <input type="button" id="remove" class="edit-buttons" value="Remove" />
             <input type="button" id="done" class="edit-buttons" value="Done" />
         </div>
-        <div id="display-container"></div>
+        <div id="display-container" class="rounded shadowed">
+            <ul id="display-stocks-list" class="rounded"></ul>
+        </div>
     </div>
 
     <!-- Application source. -->

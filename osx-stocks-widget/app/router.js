@@ -13,6 +13,7 @@ function(app, AppView) {
     },
 
     index: function() {
+        AppView.render();
     }
   });
 
