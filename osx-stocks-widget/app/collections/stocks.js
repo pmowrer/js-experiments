@@ -15,7 +15,7 @@ define([
         initialize: function() {
             this.on('add', function(model) {
                 this.load(model);
-            }, this),
+            }, this);
 
             this.on('reset', function() {
                 if(this.length > 0) {
