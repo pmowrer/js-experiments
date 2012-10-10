@@ -20,9 +20,13 @@ define([
                 collection: StocksCollection,
                 itemView: StockView
             });
+
+            this.statusDisplay = this.$('#display-status');
         },
 
         render: function() {
+            this.statusDisplay.html('Retrieving Data...');
+
             return this;
         }
     });

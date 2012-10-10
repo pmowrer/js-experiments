@@ -108,6 +108,68 @@ body {
     width: 62px;
     height: 22px;
     margin: 0 5px;
+    padding-top: 2px;
+}
+
+#display-controls {
+    background: #061a42;
+    background: -moz-linear-gradient(top, #586e8f 0%, #263c61 49%, #071a43 50%, #061a42 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#586e8f), color-stop(49%,#263c61),
+    color-stop(50%,#071a43), color-stop(100%,#061a42)); 
+    background: -webkit-linear-gradient(top, #586e8f 0%, #263c61 49%, #071a43 50%, #061a42 100%);
+    background: -o-linear-gradient(top, #586e8f 0%, #263c61 49%, #071a43 50%, #061a42 100%);  
+    background: -ms-linear-gradient(top,#586e8f 0%, #263c61 49%, #071a43 50%, #061a42 100%);  
+    background: linear-gradient(to bottom,#586e8f 0%, #263c61 49%, #071a43 50%, #061a42 100%);  
+
+    margin-top: 5px; 
+    padding: 0 6px;
+    height: 30px;
+}
+
+#yahoo-info, #info {
+    border: 0;
+    height: 13px;
+    margin-top: 3px;
+    vertical-align: middle;
+}
+
+#yahoo-info {
+    background: url('../images/yahoo-info.png') no-repeat;
+    width: 22px;
+}
+
+#yahoo-info:hover {
+    background: url('../images/yahoo-info-active.png') no-repeat;
+}
+
+#display-status {
+    display: inline-block;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: top;
+    width: 151px;
+}
+
+#info {
+    background: url('../images/info-button.png') no-repeat;
+    width: 13px;
+}
+
+#info:hover {
+    background: url('../images/info-button-active.png') no-repeat;
+}
+
+#display-footer {
+    background: #061a42;
+    background: -moz-linear-gradient(left, #051d3e 0%, #2d415e 50%, #051d3e 100%);
+    background: -webkit-gradient(linear, top left, top right, color-stop(0%,#2d415e), color-stop(50%,#051d3e),
+    color-stop(100%,#586e8f)); 
+    background: -webkit-linear-gradient(left, #051d3e 0%, #2d415e 50%, #051d3e 100%);
+    background: -o-linear-gradient(left, #051d3e 0%, #2d415e 50%, #051d3e 100%);
+    background: -ms-linear-gradient(left, #051d3e 0%, #2d415e 50%, #051d3e 100%);
+    background: linear-gradient(to right, #051d3e 0%, #2d415e 50%, #051d3e 100%);
+
+    height: 3px;
 }
 
 .positive input {

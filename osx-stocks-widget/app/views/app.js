@@ -12,6 +12,7 @@ define([
         el: '#main',
 
         render: function() {
+            DisplayView.render();
             StocksCollection.fetch();
 
             return this;
