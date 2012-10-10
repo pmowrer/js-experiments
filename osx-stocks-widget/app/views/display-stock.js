@@ -16,11 +16,15 @@ define([
         },
 
         render: function() {
-            this.$el.html(this.template(this.model.toJSON()));
-            
-            var isPositive = this.model.get('change') >= 0;
-            this.$el.toggleClass('positive', isPositive);
-            this.$el.toggleClass('negative', !isPositive);
+            var templateModel = this.model.toJSON();
+            var isPositive = templateModel.change >= 0;
+
+            templateModel.price = templateModel.price.toFixed(2);
+            templateModel.change = Math.abs(templateModel.change.toFixed(2));
+            templateModel.sign = isPositive ? '+' : '-';
+
+            this.$el.html(this.template(templateModel));
+            this.$('.change').toggleClass('negative', !isPositive);
 
             return this;
         }
