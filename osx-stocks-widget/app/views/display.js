@@ -11,9 +11,6 @@ define([
 
         el: '#display-container',
 
-        events: {
-        },
-
         initialize: function() {
             this.stocksView = new ListView({
                 el: '#display-stocks-list',
@@ -22,12 +19,30 @@ define([
             });
 
             this.statusDisplay = this.$('#display-status');
+            this.statusMessage = '';
+
+            StocksCollection.on('loading', this.loadingHandler, this);
+            StocksCollection.on('loaded', this.loadedHandler, this);
         },
 
         render: function() {
-            this.statusDisplay.html('Retrieving Data...');
+            this.statusDisplay.html(this.statusMessage);
 
             return this;
+        },
+
+        loadingHandler: function() {
+            this.setStatus('Retreiving Data...');
+        },
+
+        loadedHandler: function() {
+            this.setStatus('Quotes last updated at');
+            
+        },
+
+        setStatus: function(message) {
+            this.statusMessage = message;
+            this.render();
         }
     });
 

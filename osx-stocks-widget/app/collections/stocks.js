@@ -31,6 +31,8 @@ define([
             $.ajax({
                 url: 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json'
             }).done($.proxy(this.parseQuotes, this));
+
+            this.trigger('loading');
         },
 
         findBySymbol: function(symbol) {
@@ -50,6 +52,8 @@ define([
                 var model = this.findBySymbol(row.symbol);
                 model.save({ name: row.name, price: parseFloat(row.price), change: parseFloat(row.change), cap: row.cap });
             }, this);
+
+            this.trigger('loaded');
         }
 
     });
