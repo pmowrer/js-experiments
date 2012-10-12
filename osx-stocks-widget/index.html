@@ -1,44 +1,44 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Backbone Boilerplate</title>
+        <title>Backbone Boilerplate</title>
 
-  <!-- Application root. -->
-  <base href="/">
+        <!-- Application root. -->
+        <base href="/">
 
-  <!-- Application styles. -->
-  <link rel="stylesheet" href="assets/css/index.css">
-</head>
+        <!-- Application styles. -->
+        <link rel="stylesheet" href="assets/css/index.css">
+    </head>
 
-<body>
-  <!-- Main container. -->
-    <div role="main" id="main">
-        <div id="edit-container" class="rounded shadowed">
-            <input id="symbol-input" />
-            <input type="button" id="add" value="+" />
-            <h1 id="stocks-header">Quotes:</h1>
-            <ul id="edit-stocks-list"></ul>
-            <img src="assets/images/yahoo.png"
-            id="yahoo" class="centered-image" alt="Yahoo Finance" />
-            <input type="button" id="remove" class="edit-buttons" value="Remove" />
-            <input type="button" id="done" class="edit-buttons" value="Done" />
-        </div>
-        <div id="display-container" class="rounded shadowed">
-            <ul id="display-stocks-list"></ul>
-            <div id="display-controls">
-                <input type="button" id="yahoo-info" value="" />
-                <span id="display-status"></span>
-                <input type="button" id="info" value="" />
+    <body>
+    <!-- Main container. -->
+        <div role="main" id="main">
+            <div id="edit-container" class="rounded shadowed">
+                <input id="symbol-input" />
+                <input type="button" id="add" value="+" />
+                <h1 id="stocks-header">Quotes:</h1>
+                <ul id="edit-stocks-list"></ul>
+                <img src="assets/images/yahoo.png"
+                id="yahoo" class="centered-image" alt="Yahoo Finance" />
+                <input type="button" id="remove" class="edit-buttons" value="Remove" />
+                <input type="button" id="done" class="edit-buttons" value="Done" />
             </div>
-            <div id="display-footer" />
+            <div id="display-container" class="rounded shadowed">
+                <ul id="display-stocks-list"></ul>
+                <div id="display-controls">
+                    <input type="button" id="yahoo-info" value="" />
+                    <span id="display-status"></span>
+                    <input type="button" id="info" value="" />
+                </div>
+                <div id="display-footer" />
+            </div>
         </div>
-    </div>
 
     <!-- Application source. -->
-    <script data-main="app/config" src="assets/js/libs/require.js"></script>
-</body>
+        <script data-main="app/config" src="assets/js/libs/require.js"></script>
+    </body>
 </html>

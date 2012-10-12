@@ -36,8 +36,11 @@ define([
         },
 
         loadedHandler: function() {
-            this.setStatus('Quotes last updated at');
-            
+            var now = new Date();
+            var ampm = now.getHours() < 12 ? 'AM' : 'PM';
+            var hour = 12 - (-now.getHours() % 12);
+            var dateString = hour + ':' + now.getMinutes() + ' ' + ampm;
+            this.setStatus('Quotes last updated at ' + dateString);
         },
 
         setStatus: function(message) {
