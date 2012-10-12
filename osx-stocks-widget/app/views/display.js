@@ -3,16 +3,17 @@ define([
     'lodash',
     'backbone',
     'collections/stocks',
-    'views/list',
+    'views/display-list',
     'views/display-stock'
-], function($, _, Backbone, StocksCollection, ListView, StockView) {
+], function($, _, Backbone, StocksCollection, DisplayList, StockView) {
 
     var view = Backbone.View.extend({
 
         el: '#display-container',
 
+
         initialize: function() {
-            this.stocksView = new ListView({
+            this.stocksView = new DisplayList({
                 el: '#display-stocks-list',
                 collection: StocksCollection,
                 itemView: StockView
@@ -38,8 +39,11 @@ define([
         loadedHandler: function() {
             var now = new Date();
             var ampm = now.getHours() < 12 ? 'AM' : 'PM';
-            var hour = 12 - (-now.getHours() % 12);
-            var dateString = hour + ':' + now.getMinutes() + ' ' + ampm;
+            var hour = 12 - ((-now.getHours() % 12) + 12) % 12;
+            var minutes = now.getMinutes();
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            var dateString = hour + ':' + minutes + ' ' + ampm;
             this.setStatus('Quotes last updated at ' + dateString);
         },
 

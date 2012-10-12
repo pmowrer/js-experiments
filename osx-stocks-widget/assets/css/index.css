@@ -14,9 +14,18 @@
     box-sizing : border-box;
 }
 
-input[type="button"]::-moz-focus-inner { 
+/* FF-specific */
+:focus {
+    outline: none;
+}
+
+::-moz-focus-inner {
     border: 0;
-} 
+}
+
+a:focus { 
+    outline: none; 
+}
 
 .centered-image {
     display: block;
@@ -104,7 +113,7 @@ body {
 #display-stocks-list .change {
     display: inline-block;
     height: 22px;
-    line-height: 22px;
+    line-height: 21px;
     margin: 0 5px;
     padding: 0 5px;
     text-decoration: none;
