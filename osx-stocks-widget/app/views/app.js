@@ -13,7 +13,17 @@ define([
 
         render: function() {
             DisplayView.render();
-            StocksCollection.fetch();
+
+            StocksCollection.fetch({ success: function(collection, response) {
+                if(collection.length === 0) {
+                    collection.add([
+                        { symbol: 'ADBE' },
+                        { symbol: 'PKT' },
+                        { symbol: 'GOOG' },
+                        { symbol: 'MSFT' }
+                    ]);
+                }
+            }});
 
             return this;
         }
