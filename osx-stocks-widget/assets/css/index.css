@@ -143,16 +143,24 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c23d37', endColorstr='#aa261f',GradientType=0 ); /* IE6-9 */
 }
 
-#display-stocks-list .sign {
+.sign {
     display: inline-block;
     text-align: center; 
     width: 8px;
 }
 
-#display-stocks-list .value {
+.cap span.sign {
+    display: none;
+}
+
+.value {
     display: inline-block;
     text-align: right;
     width: 42px;
+}
+
+.cap span.value {
+    width: 50px;
 }
 
 #display-controls {
