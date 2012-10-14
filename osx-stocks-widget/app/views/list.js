@@ -12,7 +12,6 @@ define([
         },
 
         initialize: function() {
-            this.selected = undefined;
             this.itemView = this.options.itemView;
             
             this.collection.on('add', this.addOne, this);
@@ -33,6 +32,7 @@ define([
         },
 
         addAll: function() {
+            this.selected = undefined;
             this.itemViews = [];
             this.$el.html('');
             this.collection.each(this.addOne, this);

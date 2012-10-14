@@ -1,19 +1,19 @@
 define([
   // Application.
   "app",
-  "views/app"
+  "views/display-list"
 ],
 
-function(app, AppView) {
+function(app, DisplayListView) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
     routes: {
-      "*path": "index"
+      "display/:mode": "setDisplayMode"
     },
 
-    index: function() {
-        AppView.render();
+    setDisplayMode: function(mode) {
+        DisplayListView.setMode(mode);
     }
   });
 

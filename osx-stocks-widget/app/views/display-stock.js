@@ -18,6 +18,8 @@ define([
         render: function(mode) {
             var templateModel = this.model.toJSON();
             var isPositive = templateModel.change >= 0;
+            var nextMode;
+            var modeClass;
 
             templateModel.price = templateModel.price.toFixed(2);
             templateModel.sign = isPositive ? '+' : '-';
@@ -26,6 +28,8 @@ define([
             switch(mode) {
                 case 2 :
                     templateModel.change = Math.abs((templateModel.change / templateModel.price) * 100).toFixed(2) + '%';
+                    modeClass = 'percentChange';
+                    nextMode = 0;
                     break;
 
                 case 1 :
@@ -34,16 +38,23 @@ define([
 
                     templateModel.change = capNumber + templateModel.cap.charAt(templateModel.cap.length - 1);
                     templateModel.sign = '';
+                    modeClass = 'cap';
+                    nextMode = 2;
                     break;
 
                 case 0 :
                     /* falls through */
                 default :
                     templateModel.change = Math.abs(templateModel.change).toFixed(2);
+                    modeClass = 'priceChange';
+                    nextMode = 1;
             }
 
             this.$el.html(this.template(templateModel));
-            this.$('.change').toggleClass('negative', !isPositive);
+            this.$('.change')
+                .toggleClass('negative', !isPositive)
+                .addClass(modeClass)
+                .attr('href', '#/display/' + nextMode);
 
             return this;
         }

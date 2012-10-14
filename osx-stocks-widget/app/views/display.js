@@ -11,13 +11,7 @@ define([
 
         el: '#display-container',
 
-
         initialize: function() {
-            this.stocksView = new DisplayList({
-                el: '#display-stocks-list',
-                collection: StocksCollection,
-                itemView: StockView
-            });
 
             this.statusDisplay = this.$('#display-status');
             this.statusMessage = '';

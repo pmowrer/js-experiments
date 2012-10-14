@@ -1,25 +1,25 @@
 define([
     'jquery',
     'lodash',
-    'views/list'
-], function($, _, ListView) {
+    'views/list',
+    'collections/stocks',
+    'views/display-stock'
+], function($, _, ListView, Collection, ItemView) {
 
     var view = ListView.extend({
 
-        events: function() {
-            return _.extend({}, ListView.prototype.events, {
-                'click .change': 'changeClickHandler'
-            });
-        },
+        el: '#display-stocks-list',
 
-        changeClickHandler: function() {
-            this.mode = this.mode !== undefined ? ++this.mode % 3 : 1;
+        collection: Collection,
+
+        setMode: function(mode) {
+            mode = isNaN(mode) ? 0 : mode % 3;
 
             _.each(this.itemViews, function(view) {
-                view.render(this.mode);
+                view.render(mode);
             }, this);
         }
     });
 
-    return view;
+    return new view({ itemView: ItemView });
 });
