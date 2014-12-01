@@ -18,7 +18,6 @@ require.config({
   },
 
   shim: {
-    "plugins/backbone.layoutmanager": ["backbone"],
     "plugins/backbone.localstorage": ["backbone"]
   }
 
