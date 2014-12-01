@@ -11,8 +11,8 @@ define([
             'click li': 'clickHandler'
         },
 
-        initialize: function() {
-            this.itemView = this.options.itemView;
+        initialize: function( options ) {
+            this.itemView = options.itemView;
             
             this.collection.on('add', this.addOne, this);
             this.collection.on('reset', this.addAll, this);

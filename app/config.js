@@ -11,17 +11,13 @@ require.config({
     vendor: "../assets/vendor",
 
     // Libraries.
-    jquery: "../assets/js/libs/jquery",
-    lodash: "../assets/js/libs/lodash",
-    backbone: "../assets/js/libs/backbone"
+    backbone: "../node_modules/backbone/backbone",
+    lodash: "../node_modules/lodash/lodash",
+    jquery: "../node_modules/jquery/dist/jquery",
+    underscore: "../node_modules/underscore/underscore"
   },
 
   shim: {
-    backbone: {
-      deps: ["lodash", "jquery"],
-      exports: "Backbone"
-    },
-
     "plugins/backbone.layoutmanager": ["backbone"],
     "plugins/backbone.localstorage": ["backbone"]
   }
