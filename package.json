@@ -1,0 +1,8 @@
+{
+  "name": "osx-stocks-widget",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.10",
+    "browser-sync": "~1.7.2"
+  }
+}
