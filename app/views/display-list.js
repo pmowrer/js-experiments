@@ -1,6 +1,6 @@
 define([
     'jquery',
-    'lodash',
+    'underscore',
     'views/list',
     'collections/stocks',
     'views/display-stock'

@@ -1,12 +1,12 @@
 define([
     'jquery',
-    'lodash',
+    'underscore',
     'backbone',
     'text!templates/display-stock.html'
 ], function($, _, Backbone, template) {
 
     var view = Backbone.View.extend({
-        
+
         tagName: 'li',
 
         template: _.template(template),

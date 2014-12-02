@@ -13,7 +13,6 @@ require.config({
     // Libraries.
     backbone: "../node_modules/backbone/backbone",
     "backbone.localstorage": "../node_modules/backbone.localstorage/backbone.localStorage",
-    lodash: "../node_modules/lodash/lodash",
     jquery: "../node_modules/jquery/dist/jquery",
     underscore: "../node_modules/underscore/underscore"
   }

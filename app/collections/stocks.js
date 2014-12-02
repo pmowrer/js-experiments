@@ -1,6 +1,6 @@
 define([
     'jquery',
-    'lodash',
+    'underscore',
     'backbone',
     'models/stock',
     'backbone.localstorage'
@@ -26,7 +26,7 @@ define([
 
         load: function(model) {
             var symbols = model ? model.get('symbol') : this.pluck('symbol').toString();
-            var query = "select * from csv where url='http://download.finance.yahoo.com/d/quotes.csv?s=" + symbols + "&f=snl1c6j1&e=.csv' and columns='symbol,name,price,change,cap'"; 
+            var query = "select * from csv where url='http://download.finance.yahoo.com/d/quotes.csv?s=" + symbols + "&f=snl1c6j1&e=.csv' and columns='symbol,name,price,change,cap'";
 
             $.ajax({
                 url: 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json'
@@ -38,7 +38,7 @@ define([
         findBySymbol: function(symbol) {
             return this.find(function(stock) {
                 return stock.get('symbol') === symbol;
-            });        
+            });
         },
 
         parseQuotes: function(data) {

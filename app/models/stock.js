@@ -1,5 +1,5 @@
 define([
-    'lodash',
+    'underscore',
     'backbone'
 ], function(_, Backbone) {
 
