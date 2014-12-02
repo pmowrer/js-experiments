@@ -7,6 +7,12 @@ define([
     'views/display'
 ], function($, _, Backbone, StocksCollection, EditView, DisplayView) {
 
+    var defaultStocks = [
+        'AAPL',
+        'GOOG',
+        'MSFT'
+    ];
+
     var view = Backbone.View.extend({
 
         el: '#main',
@@ -14,16 +20,18 @@ define([
         render: function() {
             DisplayView.render();
 
-            StocksCollection.fetch({ success: function(collection, response) {
-                if(collection.length === 0) {
-                    collection.add([
-                        { symbol: 'ADBE' },
-                        { symbol: 'PKT' },
-                        { symbol: 'GOOG' },
-                        { symbol: 'MSFT' }
-                    ]);
-                }
-            }});
+            StocksCollection
+                .fetch({
+                    success: function(collection) {
+                        if (collection.length === 0) {
+                            collection.add(_(defaultStocks).map(function(stock) {
+                                return {
+                                    symbol: stock
+                                };
+                            }));
+                        }
+                    }
+                });
 
             return this;
         }

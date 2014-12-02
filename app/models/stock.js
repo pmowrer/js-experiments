@@ -13,9 +13,12 @@ define([
             cap: ''
         },
 
+        idAttribute: 'symbol',
+
         getPercentageChange: function() {
             return change / price;
         }
+
     });
 
     return model;

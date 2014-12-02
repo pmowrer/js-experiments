@@ -13,47 +13,55 @@ define([
         localStorage: new Store('pmowrer-stocks'),
 
         initialize: function() {
-            this.on('add', function(model) {
-                this.load(model);
-            }, this);
+            this.on('add', this.refreshQuotes, this);
 
             this.on('reset', function() {
-                if(this.length > 0) {
-                    this.load();
+                if (this.length > 0) {
+                    this.refreshQuotes();
                 }
             }, this);
         },
 
-        load: function(model) {
-            var symbols = model ? model.get('symbol') : this.pluck('symbol').toString();
-            var query = "select * from csv where url='http://download.finance.yahoo.com/d/quotes.csv?s=" + symbols + "&f=snl1c6j1&e=.csv' and columns='symbol,name,price,change,cap'";
+        findBySymbol: function(symbol) {
+            return this.findWhere({
+                symbol: symbol
+            });
+        },
+
+        refreshQuotes: function() {
+            var symbols = this.pluck('symbol').toString(),
+                query = "select * from csv where url='http://download.finance.yahoo.com/d/quotes.csv?s=" + symbols + "&f=snl1c6j1&e=.csv' and columns='symbol,name,price,change,cap'",
+                url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json',
+                self = this;
 
             $.ajax({
-                url: 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json'
-            }).done($.proxy(this.parseQuotes, this));
+                url: url
+            }).done(function(data) {
+                self.set(self.parseQuotes(data));
+                self.each(function(model) {
+                    model.save();
+                });
+
+                self.trigger('loaded');
+            });
 
             this.trigger('loading');
         },
 
-        findBySymbol: function(symbol) {
-            return this.find(function(stock) {
-                return stock.get('symbol') === symbol;
-            });
-        },
-
         parseQuotes: function(data) {
-            var rows;
+            var stocks = data.query.results.row;
 
-            data = data.query ? data : $.parseJSON(data);
-            rows = data.query.results.row;
-            rows = rows.length ? rows : [rows];
+            return _(stocks).map(function(stock) {
+                return _(stock)
+                    .chain()
+                    .pick('symbol', 'name', 'cap')
+                    .extend({
+                        price: parseFloat(stock.price),
+                        change: parseFloat(stock.change),
 
-            _.each(rows, function(row) {
-                var model = this.findBySymbol(row.symbol);
-                model.save({ name: row.name, price: parseFloat(row.price), change: parseFloat(row.change), cap: row.cap });
-            }, this);
-
-            this.trigger('loaded');
+                    })
+                    .value();
+            });
         }
 
     });
