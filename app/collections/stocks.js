@@ -3,7 +3,7 @@ define([
     'lodash',
     'backbone',
     'models/stock',
-    'plugins/backbone.localstorage'
+    'backbone.localstorage'
 ], function($, _, Backbone, Stock) {
 
     var collection = Backbone.Collection.extend({

@@ -7,6 +7,9 @@
     "lodash": "~2.4.1",
     "backbone": "~1.1.2",
     "jquery": "~2.1.1",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "install": "~0.1.8",
+    "npm": "~2.1.10",
+    "backbone.localstorage": "~1.1.14"
   }
 }
