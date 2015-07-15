@@ -1,10 +1,8 @@
 define([
-  // Application.
-  "app",
   "views/display-list"
 ],
 
-function(app, DisplayListView) {
+function(DisplayListView) {
 
   // Defining the application router, you can attach sub routers here.
   var Router = Backbone.Router.extend({
